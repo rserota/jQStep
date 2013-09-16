@@ -1,0 +1,13 @@
+
+
+.button {
+    width:30px;
+    height:25px;
+    border:4px solid black;
+    display:inline-block;
+    margin:10px;
+}
+
+.on {
+    background-color:black;
+}
