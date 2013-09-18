@@ -14,322 +14,47 @@ $(document).ready(function(){
     },100)
 
 /////////////////////////////////////////////////////////////////////////////////////
-var cols = ['col1','col2','col3','col4','col5','col6','col7','col8']
-var col = 'hi'
+    var cols = ['col1','col2','col3','col4','col5','col6','col7','col8']
 
-
-        window.setTimeout(function(){
-            setInterval(function(){
-                $('.button').each(function(i){
-                    if ($(this).hasClass(cols[0])){
-                        $(this).css('border-color','red')
-                        if ($(this).hasClass('on')){
-                            if ($(this).parent().hasClass('row1')){
-                                C.play()
+        var step = function(col){
+            window.setTimeout(function(){
+                setInterval(function(){
+                    $('.button').each(function(i){
+                        if ($(this).hasClass(cols[col])){
+                            $(this).css('border-color','red')
+                            if ($(this).hasClass('on')){
+                                if ($(this).parent().hasClass('row1')){
+                                    C.play()
+                                }
+                                else if ($(this).parent().hasClass('row2')){
+                                    A.play()
+                                }
+                                else if ($(this).parent().hasClass('row3')){
+                                    Gb.play()
+                                }
+                                else if ($(this).parent().hasClass('row4')){
+                                    D.play()
+                                }
                             }
-                            else if ($(this).parent().hasClass('row2')){
-                                A.play()
-                            }
-                            else if ($(this).parent().hasClass('row3')){
-                                Gb.play()
-                            }
-                            else if ($(this).parent().hasClass('row4')){
-                                D.play()
-                            }
-                        }
-                    }         
-                })
-            },4000)
-        },500*0)
-    
-
-
-        window.setTimeout(function(){
-            setInterval(function(){
-                $('.button').each(function(i){
-                    if ($(this).hasClass(cols[0])){
-                        $(this).css('border-color','black')
-                    }         
-                })
-            },4000)
-        },(500*0)+100)
-
+                        }         
+                    })
+                },4000)
+            },500*col)
+            
+            window.setTimeout(function(){
+                setInterval(function(){
+                    $('.button').each(function(i){
+                        if ($(this).hasClass(cols[col])){
+                            $(this).css('border-color','black')
+                        }         
+                    })
+                },4000)
+            },(500*col)+100)
+        }
 /////////////////////////////////////////////////////////////////////////////////////
 
-
-        window.setTimeout(function(){
-            setInterval(function(){
-                $('.button').each(function(i){
-                    if ($(this).hasClass(cols[1])){
-                        $(this).css('border-color','red')
-                        if ($(this).hasClass('on')){
-                            if ($(this).parent().hasClass('row1')){
-                                C.play()
-                            }
-                            else if ($(this).parent().hasClass('row2')){
-                                A.play()
-                            }
-                            else if ($(this).parent().hasClass('row3')){
-                                Gb.play()
-                            }
-                            else if ($(this).parent().hasClass('row4')){
-                                D.play()
-                            }
-                        }
-                    }         
-                })
-            },4000)
-        },500*1)
-    
-
-
-        window.setTimeout(function(){
-            setInterval(function(){
-                $('.button').each(function(i){
-                    if ($(this).hasClass(cols[1])){
-                        $(this).css('border-color','black')
-                    }         
-                })
-            },4000)
-        },(500*1)+100)
-/////////////////////////////////////////////////////////////////////////////////////
-
-
-        window.setTimeout(function(){
-            setInterval(function(){
-                $('.button').each(function(i){
-                    if ($(this).hasClass(cols[2])){
-                        $(this).css('border-color','red')
-                        if ($(this).hasClass('on')){
-                            if ($(this).parent().hasClass('row1')){
-                                C.play()
-                            }
-                            else if ($(this).parent().hasClass('row2')){
-                                A.play()
-                            }
-                            else if ($(this).parent().hasClass('row3')){
-                                Gb.play()
-                            }
-                            else if ($(this).parent().hasClass('row4')){
-                                D.play()
-                            }
-                        }
-                    }         
-                })
-            },4000)
-        },500*2)
-    
-
-
-        window.setTimeout(function(){
-            setInterval(function(){
-                $('.button').each(function(i){
-                    if ($(this).hasClass(cols[2])){
-                        $(this).css('border-color','black')
-                    }         
-                })
-            },4000)
-        },(500*2)+100)
-/////////////////////////////////////////////////////////////////////////////////////
-
-
-        window.setTimeout(function(){
-            setInterval(function(){
-                $('.button').each(function(i){
-                    if ($(this).hasClass(cols[3])){
-                        $(this).css('border-color','red')
-                        if ($(this).hasClass('on')){
-                            if ($(this).parent().hasClass('row1')){
-                                C.play()
-                            }
-                            else if ($(this).parent().hasClass('row2')){
-                                A.play()
-                            }
-                            else if ($(this).parent().hasClass('row3')){
-                                Gb.play()
-                            }
-                            else if ($(this).parent().hasClass('row4')){
-                                D.play()
-                            }
-                        }
-                    }         
-                })
-            },4000)
-        },500*3)
-    
-
-
-        window.setTimeout(function(){
-            setInterval(function(){
-                $('.button').each(function(i){
-                    if ($(this).hasClass(cols[3])){
-                        $(this).css('border-color','black')
-                    }         
-                })
-            },4000)
-        },(500*3)+100)
-/////////////////////////////////////////////////////////////////////////////////////
-
-
-        window.setTimeout(function(){
-            setInterval(function(){
-                $('.button').each(function(i){
-                    if ($(this).hasClass(cols[4])){
-                        $(this).css('border-color','red')
-                        if ($(this).hasClass('on')){
-                            if ($(this).parent().hasClass('row1')){
-                                C.play()
-                            }
-                            else if ($(this).parent().hasClass('row2')){
-                                A.play()
-                            }
-                            else if ($(this).parent().hasClass('row3')){
-                                Gb.play()
-                            }
-                            else if ($(this).parent().hasClass('row4')){
-                                D.play()
-                            }
-                        }
-                    }         
-                })
-            },4000)
-        },500*4)
-    
-
-
-        window.setTimeout(function(){
-            setInterval(function(){
-                $('.button').each(function(i){
-                    if ($(this).hasClass(cols[4])){
-                        $(this).css('border-color','black')
-                    }         
-                })
-            },4000)
-        },(500*4)+100)
-/////////////////////////////////////////////////////////////////////////////////////
-
-
-        window.setTimeout(function(){
-            setInterval(function(){
-                $('.button').each(function(i){
-                    if ($(this).hasClass(cols[5])){
-                        $(this).css('border-color','red')
-                        if ($(this).hasClass('on')){
-                            if ($(this).parent().hasClass('row1')){
-                                C.play()
-                            }
-                            else if ($(this).parent().hasClass('row2')){
-                                A.play()
-                            }
-                            else if ($(this).parent().hasClass('row3')){
-                                Gb.play()
-                            }
-                            else if ($(this).parent().hasClass('row4')){
-                                D.play()
-                            }
-                        }
-                    }         
-                })
-            },4000)
-        },500*5)
-    
-
-
-        window.setTimeout(function(){
-            setInterval(function(){
-                $('.button').each(function(i){
-                    if ($(this).hasClass(cols[5])){
-                        $(this).css('border-color','black')
-                    }         
-                })
-            },4000)
-        },(500*5)+100)
-/////////////////////////////////////////////////////////////////////////////////////
-
-
-        window.setTimeout(function(){
-            setInterval(function(){
-                $('.button').each(function(i){
-                    if ($(this).hasClass(cols[6])){
-                        $(this).css('border-color','red')
-                        if ($(this).hasClass('on')){
-                            if ($(this).parent().hasClass('row1')){
-                                C.play()
-                            }
-                            else if ($(this).parent().hasClass('row2')){
-                                A.play()
-                            }
-                            else if ($(this).parent().hasClass('row3')){
-                                Gb.play()
-                            }
-                            else if ($(this).parent().hasClass('row4')){
-                                D.play()
-                            }
-                        }
-                    }         
-                })
-            },4000)
-        },500*6)
-    
-
-
-        window.setTimeout(function(){
-            setInterval(function(){
-                $('.button').each(function(i){
-                    if ($(this).hasClass(cols[6])){
-                        $(this).css('border-color','black')
-                    }         
-                })
-            },4000)
-        },(500*6)+100)
-/////////////////////////////////////////////////////////////////////////////////////
-
-
-        window.setTimeout(function(){
-            setInterval(function(){
-                $('.button').each(function(i){
-                    if ($(this).hasClass(cols[7])){
-                        $(this).css('border-color','red')
-                        if ($(this).hasClass('on')){
-                            if ($(this).parent().hasClass('row1')){
-                                C.play()
-                            }
-                            else if ($(this).parent().hasClass('row2')){
-                                A.play()
-                            }
-                            else if ($(this).parent().hasClass('row3')){
-                                Gb.play()
-                            }
-                            else if ($(this).parent().hasClass('row4')){
-                                D.play()
-                            }
-                        }
-                    }         
-                })
-            },4000)
-        },500*7)
-    
-
-
-        window.setTimeout(function(){
-            setInterval(function(){
-                $('.button').each(function(i){
-                    if ($(this).hasClass(cols[7])){
-                        $(this).css('border-color','black')
-                    }         
-                })
-            },4000)
-        },(500*7)+100)
-
-
-
-
+    for (var i = 0; i < 8; i++){
+        step(i)
+    }
 
 })
-
-var phone = new Audio('sounds/phone.wav');
-var song = new Audio('sounds/asm.mp3');
-//song.play();
-// window.setTimeout('phone.play()',2500)
-//phone.play();
-
