@@ -24,17 +24,20 @@ for (var i = 1; i <= 64; i++){
 $('.stepCount.button').on('click',function(){
 	$('.stepCount.button').removeClass('on')
 	$(this).addClass('on')
-    console.log($('.rowContainer').length)
 	song.numSteps = $(this).index()+1
 	for (var i=1; i < $('.row').length+1; i++ ){
-		console.log(i)
 		while ($('.row'+i+' .button').length < song.numSteps){
 			$('.row'+i).append('<div class="button stepButton"></div>')
+			song.notesOn[i-1].push(true)
 		}
 	}
 	while ($('.row1 .button').length > song.numSteps){
 		$('.button.stepButton:last-child').remove()
+		for (var i=1; i < $('.row').length+1; i++){
+		    song.notesOn[i-1].pop()
+	    }
 	}
+	console.log(song.notesOn[0].length)
 
 })
 ///////////////////////////////
