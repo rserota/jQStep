@@ -1,13 +1,43 @@
+var song = {
+	numSteps : 0,
+	notesOn : [[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+	bpm : 120
+}
+
 $(document).ready(function(){
     $('#timer').text(new Date)
-    var D = new Audio('sounds/D.wav')
-    var Gb = new Audio('sounds/Gb.wav')
-    var A = new Audio('sounds/A.wav')
-    var C = new Audio('sounds/C.wav')
+    var D1 = new Audio('sounds/D1.wav')
+    var Gb1 = new Audio('sounds/Gb1.wav')
+    var A1 = new Audio('sounds/A1.wav')
+    var C1 = new Audio('sounds/C1.wav')
 
-    $('.button').click(function(){
+    $('.button.note').click(function(){
         $(this).toggleClass('on')
     })
+
+
+
+/** Set up the step counter */
+for (var i = 1; i <= 64; i++){
+	$('.stepCounter').append('<div class="stepCount button">' + i + '</div')
+}
+$('.stepCount.button').on('click',function(){
+	$('.stepCount.button').removeClass('on')
+	$(this).addClass('on')
+    console.log($('.rowContainer').length)
+	song.numSteps = $(this).index()+1
+	for (var i=1; i < $('.row').length+1; i++ ){
+		console.log(i)
+		while ($('.row'+i+' .button').length < song.numSteps){
+			$('.row'+i).append('<div class="button stepButton"></div>')
+		}
+	}
+	while ($('.row1 .button').length > song.numSteps){
+		$('.button.stepButton:last-child').remove()
+	}
+
+})
+///////////////////////////////
 
     setInterval(function(){
         $('#timer').text(new Date)
@@ -24,16 +54,16 @@ $(document).ready(function(){
                             $(this).css('border-color','red')
                             if ($(this).hasClass('on')){
                                 if ($(this).parent().hasClass('row1')){
-                                    C.play()
+                                    C1.play()
                                 }
                                 else if ($(this).parent().hasClass('row2')){
-                                    A.play()
+                                    A1.play()
                                 }
                                 else if ($(this).parent().hasClass('row3')){
-                                    Gb.play()
+                                    Gb1.play()
                                 }
                                 else if ($(this).parent().hasClass('row4')){
-                                    D.play()
+                                    D1.play()
                                 }
                             }
                         }         
