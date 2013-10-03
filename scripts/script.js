@@ -1,20 +1,43 @@
+
+var C1 = new Audio('sounds/C1.wav'),
+    D1 = new Audio('sounds/D1.wav'),
+    E1 = new Audio('sounds/E1.wav'),
+    F1 = new Audio('sounds/F1.wav'),
+    G1 = new Audio('sounds/G1.wav'),
+    A1 = new Audio('sounds/A1.wav'),
+    B1 = new Audio('sounds/B1.wav'),
+    C2 = new Audio('sounds/C2.wav'),
+    D2 = new Audio('sounds/D2.wav'),
+    E2 = new Audio('sounds/E2.wav'),
+    F2 = new Audio('sounds/F2.wav'),
+    G2 = new Audio('sounds/G2.wav'),
+    A2 = new Audio('sounds/A2.wav'),
+    B2 = new Audio('sounds/A2.wav')
+
+
+
 var song = {
 	numSteps : 0,
 	notesOn : [[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
-	bpm : 120
+	bpm : 120,
+	notes : [B2, A2, G2, F2, E2, D2, C2, B1, A1, G1, F1, E1, D1, C1],
+	intervalID : undefined,
+	TimeoutIDs : []
 }
-
 $(document).ready(function(){
-    $('#timer').text(new Date)
-    var D1 = new Audio('sounds/D1.wav')
-    var Gb1 = new Audio('sounds/Gb1.wav')
-    var A1 = new Audio('sounds/A1.wav')
-    var C1 = new Audio('sounds/C1.wav')
 
-    $('.button.stepButton').on("click",function(){
-        $(this).toggleClass('on')
-    })
 
+    var setStepHandlers = function(){
+    	$('.button.stepButton').on("click",function(){
+            $(this).toggleClass('on')
+            var col = $(this).index()
+            var row = $(this).parent().index()
+            song.notesOn[row][col] = !song.notesOn[row][col]
+            console.log(song.notesOn)
+        })
+    }
+    
+    setStepHandlers()
 
 
 /** Set up the step counter */
@@ -26,10 +49,11 @@ $(document).ready(function(){
 		$('.stepCount.button').removeClass('on')
 		$(this).addClass('on')
 		song.numSteps = $(this).index()+1
+		$('.rowContainer').width(32 * song.numSteps + 200 + 'px')
 		for (var i=1; i < $('.row').length+1; i++ ){
 			while ($('.row'+i+' .button').length < song.numSteps){
 				$('.row'+i).append('<div class="button stepButton">' + ($('.row'+i+' .button').length+1) + '</div>')
-				song.notesOn[i-1].push(true)
+				song.notesOn[i-1].push(false)
 			}
 		}
 		while ($('.row1 .button').length > song.numSteps){
@@ -38,61 +62,60 @@ $(document).ready(function(){
 			    song.notesOn[i-1].pop()
 		    }
 		}
-		$('.button.stepButton').on("click",function(){
-            $(this).toggleClass('on')
-        })
+		setStepHandlers()
 		console.log(song.notesOn[0].length)
 
 	})
-///////////////////////////////
+/*////////////////////////**/
 
     setInterval(function(){
         $('#timer').text(new Date)
     },100)
 
-/////////////////////////////////////////////////////////////////////////////////////
-//     var cols = ['col1','col2','col3','col4','col5','col6','col7','col8']
 
-//         var step = function(col){
-//             window.setTimeout(function(){
-//                 setInterval(function(){
-//                     $('.button').each(function(i){
-//                         if ($(this).hasClass(cols[col])){
-//                             $(this).css('border-color','red')
-//                             if ($(this).hasClass('on')){
-//                                 if ($(this).parent().hasClass('row1')){
-//                                     C1.play()
-//                                 }
-//                                 else if ($(this).parent().hasClass('row2')){
-//                                     A1.play()
-//                                 }
-//                                 else if ($(this).parent().hasClass('row3')){
-//                                     Gb1.play()
-//                                 }
-//                                 else if ($(this).parent().hasClass('row4')){
-//                                     D1.play()
-//                                 }
-//                             }
-//                         }         
-//                     })
-//                 },4000)
-//             },500*col)
-            
-//             window.setTimeout(function(){
-//                 setInterval(function(){
-//                     $('.button').each(function(i){
-//                         if ($(this).hasClass(cols[col])){
-//                             $(this).css('border-color','black')
-//                         }         
-//                     })
-//                 },4000)
-//             },(500*col)+100)
-//         }
-// /////////////////////////////////////////////////////////////////////////////////////
 
-//     for (var i = 0; i < 8; i++){
-//         step(i)
-//     }
+
+/** Main step function */
+    var oneStep = function(){
+    	$('.stepButton').each(function(){
+            var $this = $(this)
+            song.TimeoutIDs.push(setTimeout(function(){
+                if ($this.hasClass('on')){
+                    $this.addClass('playing')
+                    song.notes[$this.parent().index()].currentTime = 0
+                    song.notes[$this.parent().index()].play()
+                    setTimeout(function(){
+                        $this.removeClass('playing')
+                    }, 300)
+                }
+            }, 500*$this.index()))
+        })
+    }
+    var step = function(){
+    	oneStep()
+       song.intervalID = setInterval(function(){
+            oneStep()
+        }, 500*song.numSteps)
+    }
+
+
+/*///////////////////**/
+
+
+    $('.steppingToggle').on('click',function(){
+    	$(this).toggleClass('on')
+    	if($(this).hasClass('on')){
+    	    step()
+    	}
+    	else {
+    		clearInterval(song.intervalID)
+    		for (var i = 0; i < song.TimeoutIDs.length; i++){
+    		    clearTimeout(song.TimeoutIDs[i])
+    	    }
+
+    	}
+    })
+
 
 })
 

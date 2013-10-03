@@ -18,20 +18,24 @@ body {
     background-attachment: fixed;
 }
 
-
-.stepCounterContainer {
+.controlsContainer {
 	position:fixed;
-	right:1%;
+	right:5%;
+	z-index: 5;
+	background-color: rgba(0,0,0,.3);
+	border-radius: 10px;
+	padding: 15px;
+}
+.stepCounterContainer {
 	overflow:hidden;
 	margin:7px;
 	float:right;
-	background-color:rgba(5,5,5,.3);
+	background-color:rgba(5,5,5,.8);
 	height:300px;
 	width:120px;
 	border-radius:10px;
 	border:5px solid black;
 	box-shadow: 5px 5px 1px rgba(0,0,0,.7);
-
 }
 .stepCounter {
     height: 320px;
@@ -45,11 +49,13 @@ body {
 	border: 2px solid black;
 	text-align: center;
 	padding-top:15px;
+}
+
+.steppingToggle {
+    position:fixed;
 
 
 }
-
-
 
 
 
@@ -75,6 +81,8 @@ body {
 	width:20px;
 	font-size:14px;
 	margin:2px;
+	transition: border-color 0.1s;
+	-webkit-transition: border-color 0.1s;
 }
 .on {
 	border:4px solid rgba(20,15,20,1);
@@ -90,5 +98,25 @@ body {
 
 }
 
+.playing {
+	border: 4px solid red;
+}
+
+.keybound {
+	display:inline-block;
+	background-color:blue;
+	border:4px solid black;
+	height:60px;
+	width:70px;
+	margin:10px 10px 10px 10px;
+	border-radius:15px;
+}
 
 
+#chords,#tones {
+	background-color:#222;
+	display:inline-block;
+    border-radius:40px;
+
+
+}
