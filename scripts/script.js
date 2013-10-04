@@ -26,15 +26,13 @@ var song = {
 	TimeoutIDs : []
 }
 $(document).ready(function(){
-
-
     var setStepHandlers = function(){
+        $('.button.stepButton').off('click')
     	$('.button.stepButton').on("click",function(){
             $(this).toggleClass('on')
             var col = $(this).index()
             var row = $(this).parent().index()
             song.notesOn[row][col] = !song.notesOn[row][col]
-            console.log(song.notesOn)
         })
     }
     
@@ -50,7 +48,9 @@ $(document).ready(function(){
 		$('.stepCount.button').removeClass('on')
 		$(this).addClass('on')
 		song.numSteps = $(this).index()+1
-		$('.rowContainer').width(32 * song.numSteps + 200 + 'px')
+		$('.rowContainer').width(32 * song.numSteps + 500 + 'px')
+
+
 		for (var i=1; i < $('.row').length+1; i++ ){
 			while ($('.row'+i+' .button').length < song.numSteps){
 				$('.row'+i).append('<div class="button stepButton">' + song.noteNames[i-1] + '</div>')
@@ -64,8 +64,6 @@ $(document).ready(function(){
 		    }
 		}
 		setStepHandlers()
-		console.log(song.notesOn[0].length)
-
 	})
 /*////////////////////////**/
 
@@ -81,13 +79,6 @@ $(document).ready(function(){
     })
 
 /*///////////////////////*/
-
-    setInterval(function(){
-        $('#timer').text(new Date)
-    },10)
-
-
-
 
 /** Main step function */
     var oneStep = function(){
@@ -111,8 +102,6 @@ $(document).ready(function(){
             oneStep()
         }, (60/song.bpm*1000)*song.numSteps)
     }
-
-
 /*///////////////////**/
 
 
@@ -126,10 +115,7 @@ $(document).ready(function(){
     		for (var i = 0; i < song.TimeoutIDs.length; i++){
     		    clearTimeout(song.TimeoutIDs[i])
     	    }
-
     	}
     })
-
-
 })
 

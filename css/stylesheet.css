@@ -16,14 +16,19 @@ body {
 	margin:0;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    overflow:scroll;
 }
 
 #navbar {
+	width:100%;
 	background-color:black;
 	margin-bottom:5px;
 	transition: all .6s;
 	-webkit-transition: all .6s;
 	overflow:hidden;
+	position:fixed;
+	top:0%;
+	z-index: 10;
 }
 .help {
 	-webkit-transition:all .4s;
@@ -139,7 +144,7 @@ body {
 }
 
 .rowContainer{
-
+    margin-top: 90px
 }
 .keybound {
 	display:inline-block;
@@ -170,6 +175,7 @@ body {
 #chordboard {
 	position:fixed;
 	bottom:2%;
+	right:5%;
 	background-color: rgba(0,0,0,.3);
 	border-radius: 10px;
 	padding: 15px;
