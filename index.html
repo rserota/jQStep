@@ -7,10 +7,17 @@
     </head>
 
     <body id="home">
+        <div id='navbar'>
+            <div class = 'help'>?</div>
+        </div>
         <div class = "controlsContainer">
             <div class = "steppingToggle button">Step</div>
-            <div class='stepCounterContainer'>
+
+            <div class='stepCounterContainer'>Step Counter
                 <div class = "stepCounter"></div>
+            </div>
+            <div class='bpmCounterContainer'>BPM
+                <div class = "bpmCounter"></div>
             </div>
         </div>
         
@@ -31,14 +38,15 @@
             <div class='row row13'></div>
             <div class='row row14'></div>
         </div>
-        <div id="chords">
-            <div class="keybound" id='1'></div><div class="keybound" id='2'></div><div class="keybound" id='3'></div><div class="keybound" id='4'></div>
-        </div>
+        <div id="chordboard">
+            <div id="chords">
+                <div class="keybound" id='1'></div><div class="keybound" id='2'></div><div class="keybound" id='3'></div><div class="keybound" id='4'></div>
+            </div>
 
-        <div id="tones">
-            <div class="keybound" id='7'></div><div class="keybound" id='8'></div><div class="keybound" id='9'></div><div class="keybound" id='0'></div>
+            <div id="tones">
+                <div class="keybound" id='7'></div><div class="keybound" id='8'></div><div class="keybound" id='9'></div><div class="keybound" id='0'></div>
+            </div>
         </div>
-
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script type="text/javascript" src="scripts/script.js"></script>
         <script type="text/javascript" src="scripts/chordboard.js"></script>

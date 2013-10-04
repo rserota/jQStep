@@ -21,6 +21,7 @@ var song = {
 	notesOn : [[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
 	bpm : 120,
 	notes : [B2, A2, G2, F2, E2, D2, C2, B1, A1, G1, F1, E1, D1, C1],
+    noteNames : ['B', 'A', 'G', 'F', 'E', 'D', 'C', 'B', 'A', 'G', 'F', 'E', 'D', 'C'],
 	intervalID : undefined,
 	TimeoutIDs : []
 }
@@ -52,7 +53,7 @@ $(document).ready(function(){
 		$('.rowContainer').width(32 * song.numSteps + 200 + 'px')
 		for (var i=1; i < $('.row').length+1; i++ ){
 			while ($('.row'+i+' .button').length < song.numSteps){
-				$('.row'+i).append('<div class="button stepButton">' + ($('.row'+i+' .button').length+1) + '</div>')
+				$('.row'+i).append('<div class="button stepButton">' + song.noteNames[i-1] + '</div>')
 				song.notesOn[i-1].push(false)
 			}
 		}
@@ -68,9 +69,22 @@ $(document).ready(function(){
 	})
 /*////////////////////////**/
 
+/** Set up the bpm counter */
+    for (var i = 1; i <= 240; i++){
+        $('.bpmCounter').append('<div class="bpmCount button">' + i + '</div')
+    }
+    $('.bpmCount.button').on('click',function(){
+        $('.button.bpmButton').off('click')
+        $('.bpmCount.button').removeClass('on')
+        $(this).addClass('on')
+        song.bpm = $(this).index()+1
+    })
+
+/*///////////////////////*/
+
     setInterval(function(){
         $('#timer').text(new Date)
-    },100)
+    },10)
 
 
 
@@ -88,14 +102,14 @@ $(document).ready(function(){
                         $this.removeClass('playing')
                     }, 300)
                 }
-            }, 500*$this.index()))
+            }, (60/song.bpm*1000)*$this.index()))
         })
     }
     var step = function(){
     	oneStep()
        song.intervalID = setInterval(function(){
             oneStep()
-        }, 500*song.numSteps)
+        }, (60/song.bpm*1000)*song.numSteps)
     }
 
 

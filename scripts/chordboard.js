@@ -43,26 +43,26 @@ $(document).ready(function(){
 ////////// Left hand events		
 		if(event.which === 49){
 			console.log('1!')
-			$('#chords .keybound').css('background-color','blue')
-			$('#1').css('background-color','green')
+			$('#chords .keybound').removeClass('on')
+			$('#1').addClass('on')
 			boundChord = chords.alpha
 		}
 		if(event.which === 50){
 			console.log('2!')
-			$('#chords .keybound').css('background-color','blue')
-			$('#2').css('background-color','green')
+			$('#chords .keybound').removeClass('on')
+			$('#2').addClass('on')
 			boundChord = chords.beta
 		}
 		if(event.which === 51){
 			console.log('3!')
-			$('#chords .keybound').css('background-color','blue')
-			$('#3').css('background-color','green')
+			$('#chords .keybound').removeClass('on')
+			$('#3').addClass('on')
 			boundChord = chords.gamma
 		}
 		if(event.which === 52){
 			console.log('4!')
-			$('#chords .keybound').css('background-color','blue')
-			$('#4').css('background-color','green')
+			$('#chords .keybound').removeClass('on')
+			$('#4').addClass('on')
 			boundChord = chords.delta
 		}
 
@@ -70,53 +70,53 @@ $(document).ready(function(){
 		if(event.which === 55 && down7===false){
 			down7=true
 			console.log('7!')
-			$('#7').css('background-color','green')
+			$('#7').addClass('on')
 			boundChord[0].play()
 		}
 		if(event.which === 56 && down8===false){
 			down8=true
 			console.log('8!')
-			$('#8').css('background-color','green')
+			$('#8').addClass('on')
 			boundChord[1].play()
 		}
 		if(event.which === 57 && down9===false){
 			down9=true
 			console.log('9!')
-			$('#9').css('background-color','green')
+			$('#9').addClass('on')
 			boundChord[2].play()
 		}
 		if(event.which === 48 && down0===false){
 			down0=true
 			console.log('0!')
-			$('#0').css('background-color','green')
+			$('#0').addClass('on')
 			boundChord[3].play()
 		}
 	})
 	$(document).keyup(function(event){
 		if(event.which === 55){
 			console.log('7!')
-			$('#7').css('background-color','blue')
+			$('#7').removeClass('on')
 			down7=false
 			boundChord[0].pause()
 			boundChord[0].currentTime = 0
 		}
 		if(event.which === 56){
 			console.log('8!')
-			$('#8').css('background-color','blue')
+			$('#8').removeClass('on')
 			down8=false
 			boundChord[1].pause()
 			boundChord[1].currentTime = 0			
 		}
 		if(event.which === 57){
 			console.log('9!')
-			$('#9').css('background-color','blue')
+			$('#9').removeClass('on')
 			down9=false
 			boundChord[2].pause()
 			boundChord[2].currentTime = 0
 		}
 		if(event.which === 48){
 			console.log('0!')
-			$('#0').css('background-color','blue')
+			$('#0').removeClass('on')
 			down0=false
 			boundChord[3].pause()
 			boundChord[3].currentTime = 0
