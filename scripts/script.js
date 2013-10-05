@@ -41,8 +41,9 @@ $(document).ready(function(){
 
 /** Set up the step counter */
 	for (var i = 1; i <= 64; i++){
-		$('.stepCounter').append('<div class="stepCount button">' + i + '</div')
+		$('.stepCounter').append('<div class="stepCount button fantastic">' + i + '</div')
 	}
+    $('.stepCounter').append('<div class="button fantastic hidden">' + i + '</div')
 	$('.stepCount.button').on('click',function(){
 		$('.button.stepButton').off('click')
 		$('.stepCount.button').removeClass('on')
@@ -53,9 +54,10 @@ $(document).ready(function(){
 
 		for (var i=1; i < $('.row').length+1; i++ ){
 			while ($('.row'+i+' .button').length < song.numSteps){
-				$('.row'+i).append('<div class="button stepButton">' + song.noteNames[i-1] + '</div>')
+				$('.row'+i).append('<div class="button stepButton fantastic">' + song.noteNames[i-1] + '</div>')
 				song.notesOn[i-1].push(false)
 			}
+
 		}
 		while ($('.row1 .button').length > song.numSteps){
 			$('.button.stepButton:last-child').remove()
@@ -68,14 +70,15 @@ $(document).ready(function(){
 /*////////////////////////**/
 
 /** Set up the bpm counter */
-    for (var i = 1; i <= 240; i++){
-        $('.bpmCounter').append('<div class="bpmCount button">' + i + '</div')
+    for (var i = 2; i <=360; i+=2){
+        $('.bpmCounter').append('<div class="bpmCount button fantastic">' + i + '</div')
     }
+    $('.bpmCounter').append('<div class="button fantastic hidden">' + i + '</div')
     $('.bpmCount.button').on('click',function(){
         $('.button.bpmButton').off('click')
         $('.bpmCount.button').removeClass('on')
         $(this).addClass('on')
-        song.bpm = $(this).index()+1
+        song.bpm = ($(this).index()+1)*2
     })
 
 /*///////////////////////*/

@@ -197,3 +197,6 @@ body {
 	text-align: center;
 	display:inline-block;
 }
+.hidden {
+	opacity:0;
+}
